@@ -9,9 +9,9 @@ WINDOW_WIDTH = TILE_SIZE * ROWS
 WINDOW_HEIGHT = TILE_SIZE * COLS
 
 class Tile:
-def __init__(self, x, y)
-  self.x = x
-  self.y=y
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
 #game window
 window = tkinter.Tk()
@@ -72,28 +72,29 @@ def move():
      game_over = True
      return
 
-   for tile in snake_body
+   for tile in snake_body:
      if(snake.x == tile.x and snake.y == tile.y):
        game_over = True
        return
 
    if(snake.x == food.x and snake.y == food.y):
-     snake_body.append(Tile(food.x, food.y)
+     snake_body.append(Tile(food.x, food.y))
      food.x = random.randint(0, COLS-1) * TILE_SIZE
      food.y = random.randint(0, ROWS-1) * TILE_SIZE
      score += 1
 
-    for i in range(len(snake_body)-1, -1, -1):
-      tile = snake_body[]
-      if(i == 0):
-        tile.x = snake.x
-        tile.y = snake.y
-      else:
-        prev_tile = snake_body[i-1]
-        tile.x = prev_tile.x
-        tile.y = prev_tile.y
-    snake.x += velocityX * TILE_SIZE
-    snake.y += velocityY * TILE_SIZE
+   for i in range(len(snake_body)-1, -1, -1):
+        tile = snake_body[i]
+        if (i == 0):
+            tile.x = snake.x
+            tile.y = snake.y
+        else:
+            prev_tile = snake_body[i-1]
+            tile.x = prev_tile.x
+            tile.y = prev_tile.y
+
+   snake.x += velocityX * TILE_SIZE
+   snake.y += velocityY * TILE_SIZE
   
 
 
@@ -109,10 +110,11 @@ def draw():
   for tile in snake_body:
      canvas.create_rectangle(tile.x, tile.y, tile.x + TILE_SIZE, tile.y + TILE_SIZE, fill = "red")
 
-   if(game_over):
+  if(game_over):
      canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Arial 20", text = f"Game Over: {score}", fill = "white")
-    else:
-     canvas.create_text(30, 20, font = "Arial 10", text = f"Score: {score}", fill="white"
+    
+  else:
+     canvas.create_text(30, 20, font = "Arial 10", text = f"Score: {score}", fill="white")
     
   window.after(100, draw)
 
